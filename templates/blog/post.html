@@ -1,0 +1,176 @@
+
+
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% load hitcount_tags %}
+
+{% block content %}
+
+    <section class="breadcrumb-blog-single-area">
+        <div class="outer-container">
+            <div class="layer-image wow fadeInUp" data-wow-duration="1500ms" style="background: url({{post.image_url}});">
+
+            </div>    
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-blog-single">
+                        <div class="inner-box text-center">
+                            <ul class="meta-box">
+                                <li><a href="#">{{post.date|date}}</a></li>    
+                                {% for cat in post.categories.all %}
+                                    <li><a href="#">{{cat}}</a></li>  
+                                {% endfor %} <br>
+                                {% get_hit_count for post %}
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </ul>
+                            <div class="blog-single-title">{{post.title}}</div>
+                            <div class="post-author-info">
+                                <div class="img-box">
+                                    {% if post.thumbnail %}
+                                        <img src="{{post.thumbnail.url}}" alt="{{post.title}}">
+                                    {% else %}
+                                        <img src="{{post.image_url}}" alt="{{post.title}}">
+                                    {% endif %}
+                                </div>
+                                <h5>{{post.author}}</h5>    
+                            </div>
+                        </div>
+
+                        <div class="blog-prev-next-option">
+                            <div class="single prev float-left">
+                                <div class="link">
+                                    <a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i>Geri</a>
+                                </div>
+                            </div>
+                            <div class="single next float-right">
+                                <div class="link">
+                                    <a href="#">İleri<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="blog-single-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="blog-post">
+                        <div class="single-blog-item">
+                            <div class="top-text-box">
+                                <h3>“{{post.title}}”</h3>
+                                <p>{{post.overwiev|safe}}.</p>
+                            </div>
+
+                            {% if post.thumbnail %}
+                                <div class="image-box">
+                                    <img class="img-thumbnail" src="{{post.thumbnail.url}}" alt="{{post.title}}">
+                                </div>
+                            {% else %}
+                                <div class="image-box">
+                                    <img src="{{post.image_url}}" alt="{{post.title}}">
+                                </div>
+                            {% endif %}
+
+                            <div class="bottom-text-box">
+                                {% comment %} <h2>Time & tide wait for no man</h2>  {% endcomment %}
+                                <p>{{post.content|safe}}</p>
+                                      
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="col-md-2"></div>
+        <div class="col-md-12">
+            <div class="inner-comment-box">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="single-blog-title-box">
+                            <h2>Yorumlar</h2>
+                        </div>
+                        <!--Start single comment outer box-->
+                        <div class="single-comment-outer-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            {% for post_comment in post_comments %}
+                                <div class="single-comment-box">
+                                    <div class="img-box">
+                                        <img src="{% static 'images/blog/user_2.png' %}" alt="Awesome Image">
+                                    </div>
+                                    <div class="text-box">
+                                        <div class="top">
+                                            <div class="name">
+                                                <h3>{{post_comment.user}} <span>{{post_comment.date|date}}</span></h3>
+                                            </div>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{post_comment.content}}</p>
+                                            {% comment %} <a href="#">Reply</a> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!--End single comment outer box-->
+                    </div>
+                </div>
+            </div>
+            <!--Start add comment box-->
+            
+            <div class="add-comment-box">
+                <div class="single-blog-title-box">
+                    <h2>Yorumlarınızı bırakın</h2>
+                </div>
+                    <!-- <form action="{% url 'post' slug=post.slug %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{form}}
+                            <button class="btn btn-primary display-block" type="submit">gönder</button>
+                        </div>
+
+
+                    </form> -->
+                <!-- FORM İÇİNDE YAZIYOR id="add-comment-form"-->
+                <form  id="add-comment-form" method = "POST" action="{% url 'post' slug=post.slug %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {% comment %} <input type="text" name="fname" value="" placeholder="Name" required="">
+                                    <input type="email" name="form_email" value="" placeholder="Email" required="">
+                                    <input type="text" name="form_website" value="" placeholder="Website" required=""> {% endcomment %}
+                                   
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            {{form}}
+                                            <button type="submit btn-block">Yorum Yap !</button>    
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="col-md-6">
+                                    <textarea name="comment" placeholder="Your Comments" required=""></textarea>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+    <!--End add comment box-->
+    
+
+
+
+{% endblock content %}

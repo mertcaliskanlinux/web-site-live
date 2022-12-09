@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+{% load static %}
+{% include 'pages/head.html' %}
+
+<body>
+<div class="boxed_wrapper">
+
+<div class="preloader"></div> 
+
+<!-- Main header -->
+
+{% include 'pages/navbar.html' %}
+
+<!--Start breadcrumb Style5 area-->     
+<section class="breadcrumb-style5-area" style="background-image:url(images/breadcrumb/breadcrumb-style5-area-bg.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content text-center clearfix">
+                    <div class="big-title">Blog List With Sidebar</div>
+                    <h3>Trending news & thougths from our blog</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End breadcrumb Style5 area-->
+
+
+<!--Start Blog List Area-->
+<section id="blog-list-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12">
+                <div class="blog-post">
+                    
+                    {% include 'blog/post.html' %}
+                </div>
+                {% include 'pages/paginator.html' %}
+            </div>
+            
+            <!--Start sidebar Wrapper-->
+            <div class="col-xl-4 col-lg-5 col-md-8 col-sm-12">
+                <div class="blog-sidebar-wrapper">
+                    <!--Start single sidebar-->
+                    {% include 'pages/search.html' %}
+                    <!--End single sidebar-->
+                    <!--Start single sidebar-->
+                    {% include 'pages/categories.html' %}
+                    <!--End single sidebar-->
+                    <!--Start single sidebar--> 
+                    {% include 'pages/trending.html' %}
+                    <!--End single sidebar-->
+                    <!--Start single-sidebar-->
+                    {% include 'pages/tags.html' %}
+                    <!--End single-sidebar-->
+                    <!--Start single-sidebar-->    
+                    <div class="single-sidebar">
+                        <div class="title">
+                            <h3>Instagram</h3>
+                        </div>
+                        <ul class="instagram">
+                            <li>
+                                <div class="img-holder">
+                                    <img src="images/sidebar/instagram-1.jpg" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="inner">
+                                                <a href="#"><span class="icon-heart-1"></span>1k</a>    
+                                                <a href="#"><span class="icon-comment"></span>84</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="images/sidebar/instagram-2.jpg" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="inner">
+                                                <a href="#"><span class="icon-heart-1"></span>1k</a>    
+                                                <a href="#"><span class="icon-comment"></span>84</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="images/sidebar/instagram-3.jpg" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="inner">
+                                                <a href="#"><span class="icon-heart-1"></span>1k</a>    
+                                                <a href="#"><span class="icon-comment"></span>84</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="images/sidebar/instagram-4.jpg" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="inner">
+                                                <a href="#"><span class="icon-heart-1"></span>1k</a>    
+                                                <a href="#"><span class="icon-comment"></span>84</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="images/sidebar/instagram-5.jpg" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="inner">
+                                                <a href="#"><span class="icon-heart-1"></span>1k</a>    
+                                                <a href="#"><span class="icon-comment"></span>84</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="img-holder">
+                                    <img src="images/sidebar/instagram-6.jpg" alt="Awesome Image">
+                                    <div class="overlay-style-one">
+                                        <div class="box">
+                                            <div class="inner">
+                                                <a href="#"><span class="icon-heart-1"></span>1k</a>    
+                                                <a href="#"><span class="icon-comment"></span>84</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="follow-us-instagram">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>Follow us on instagram</a>
+                        </div>
+                    </div>
+                    <!--End single-sidebar-->
+                    <!--Start single-sidebar-->
+                    <div class="single-sidebar">
+                        <div class="title">
+                            <h3>Newsletter</h3>
+                        </div>
+                        <form class="newsletter-form" action="#">
+                            <input type="email" name="email" placeholder="Email Address...">    
+                            <button type="submit">Subscribe Us</button> 
+                        </form>     
+                    </div> 
+                    <!--End single-sidebar-->                    
+                </div>    
+            </div>
+            <!--End Sidebar Wrapper-->
+
+        </div>
+    </div>
+</section>
+<!--End Blog List Area-->
+
+
+<!--Start footer area-->  
+{% include 'pages/footer.html' %}
+<!--End footer area-->
+
+</div> 
+
+
+<!-- Scroll Top Button -->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="icon-down-arrow"></span>
+</button>
+
+
+{% include 'pages/scripts.html' %}
+
+
+
+</body>
+</html>
